@@ -1,1 +1,28 @@
+to connect virtual machine postgresql  to pgAdmin 
+to understand server -> client (server is virtual machine postgresql and client is pgAdmin)
 
+step 1:- to check postgresql is running or not if not start the service
+systemctl start postgresql17.service | postgresql
+step 2:- check the IP ADDRESS :- hostname -I | ip a | ifconfig
+step 3:- verify the configration file listen_addresses if the liste_address is localhost then change to * 
+path /var/lib/pgsql/16/data/postgresql.conf =>  listen_addresse="*"
+step 4:- add the enrty in hostbased authentication for configure client Authentication 
+path /var/lib/pgsql/16/data/pg_hba.conf => add the fields
+| replication | user | ip address | method 
+host | all | all | 0.0.0.0/0 | scram-sha-256
+all changes after restart the service
+
+step 5:- Allow firewall port :- for postgresql uses port 5432
+firewall-cmd --add-port=5432/tcp --permanent
+after add must reload :- firewall-cmd --reload
+too check :- firewall-cmd --list-ports
+this is from changes in Virtual machine and postgresql
+--------------------------------------------------------
+from pgAdmin open the pgAdmin and then click the server and click the Register and server
+step 1:- IN GENERAL TAB 
+just enter the casual name of our idea 
+step 2:- IN CONNECTION TAB
+host :- vm ip
+port :- port of db | or particular port
+username :- postgres | particular user
+password :- postgres password not postgresql password(not a particular user password it is a \du then we get an idea)
