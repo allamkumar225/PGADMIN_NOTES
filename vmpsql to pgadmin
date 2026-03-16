@@ -8,8 +8,8 @@ step 3:- verify the configration file listen_addresses if the liste_address is l
 path /var/lib/pgsql/16/data/postgresql.conf =>  listen_addresse="*"
 step 4:- add the enrty in hostbased authentication for configure client Authentication 
 path /var/lib/pgsql/16/data/pg_hba.conf => add the fields
-| replication | user | ip address | method 
-host | all | all | 0.0.0.0/0 | scram-sha-256
+type | replication | user | ip address | method 
+host |    all      | all  | 0.0.0.0/0  | scram-sha-256
 all changes after restart the service
 
 step 5:- Allow firewall port :- for postgresql uses port 5432
