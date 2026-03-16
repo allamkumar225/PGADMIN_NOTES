@@ -26,3 +26,16 @@ host :- vm ip
 port :- port of db | or particular port
 username :- postgres | particular user
 password :- postgres password not postgresql password(not a particular user password it is a \du then we get an idea)
+------------------------------------------------------------------------------------------------------------------------------------
+method 1:
+To disconnect pgAdmin
+ open pgAdmin and click on server and finde the server which is disconnect the select that and click on right click we find one option that is disconnect server then the server is disconnect
+method 2:-
+to remove server completely
+open the pgAdmin and go servers then click right button then we finde few options delete/Remove then it will remove  no loger show that server
+method 3:-
+to stop the server of postgresql version service in virtual machine then the pgAdmin will be automatically disconnect
+method 4:- 
+if we remove port from  firewll it will block -> Block Firewall
+firewall-cmd --remove-port=5432/tcp --permanent
+firewal-cmd --reload changes after reload the firwall service.
